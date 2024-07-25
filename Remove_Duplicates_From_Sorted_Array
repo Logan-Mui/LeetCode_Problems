@@ -1,0 +1,16 @@
+class Solution(object):
+    def removeDuplicates(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        unique_nums = set()
+        index = 0
+        num_accepted = 0
+        for i in range(len(nums)):
+            if nums[i] not in unique_nums:
+                unique_nums.add(nums[i])
+                nums[index] = nums[i]
+                index += 1
+                num_accepted += 1
+        return num_accepted
