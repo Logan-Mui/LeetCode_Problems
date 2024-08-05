@@ -1,0 +1,14 @@
+class Solution(object):
+    def majorityElement(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        vals = {}
+        for num in nums:
+            if vals.get(num) == None:
+                vals[num] = 0
+            else:
+                vals[num] += 1
+            if (vals[num]) >= ((len(nums)/2)):
+                return num
