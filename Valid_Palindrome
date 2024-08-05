@@ -1,0 +1,43 @@
+class Solution(object):
+    def isPalindrome(self, s):
+        """
+        :type s: str
+        :rtype: bool
+
+
+        [aba]   len=3   [aabaa] len=5
+         012             01234
+
+        [aa]    len=2   [abba]  len=4
+         01              0123
+
+        step 1: string conversion
+        """
+        valid_string = []
+        for c in s:
+            if c.isalnum():
+                valid_string.append(str(c).lower())
+
+        """
+        step 2: validity checking
+        check for even / odd length
+        """
+
+        half = len(valid_string) / 2
+        if len(valid_string) % 2 == 0:
+            left_index = 1
+            right_index = 0
+            while (half + right_index) < (len(valid_string)):
+                if valid_string[half + right_index] != valid_string[half - left_index]:
+                    return False
+                right_index += 1
+                left_index += 1
+        else:
+            left_index = 0
+            right_index = 0
+            while (half + right_index) < (len(valid_string)):
+                if valid_string[half + right_index] != valid_string[half - left_index]:
+                    return False
+                right_index += 1
+                left_index += 1
+        return True
